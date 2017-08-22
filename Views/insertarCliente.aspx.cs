@@ -14,6 +14,8 @@ public partial class Views_insertarCliente : System.Web.UI.Page
 
     protected void btnAgregarCliente_Click(object sender, EventArgs e)
     {
+        Conexion.Crear("CLIENTE", "localdb","" );
+
 
     }
 }
