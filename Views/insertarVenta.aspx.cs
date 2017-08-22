@@ -9,6 +9,6 @@ public partial class Views_insertarVenta : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 }

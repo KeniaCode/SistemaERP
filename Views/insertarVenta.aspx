@@ -23,16 +23,11 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Cliente</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Omar Mendez</option>
-                  <option>Juan Jose</option>
-                  <option>Andres Ronaldo</option>
-                  <option>Maria Andrea</option>
-                  <option>Ricardo Pelaez</option>
-                  <option>Luis Perez</option>
-                  <option>Catalina Anastasia</option>
-                </select>
+                <label>Cliente</label><asp:DropDownList class="form-control select2" ID="dropDownListCliente" runat="server" DataSourceID="SqlDataSource2" OnClientClick="postback false;"  onChange="cambioscliente()"  DataTextField="nombre" DataValueField="nit">
+                      <asp:ListItem></asp:ListItem>
+                  </asp:DropDownList>
+                  <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:conn %>" SelectCommand="SELECT [nit], [nombre] FROM [Cliente]"></asp:SqlDataSource>
+
               </div>
              
               <!-- /.form-group -->
@@ -41,7 +36,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                   <label for="exampleInputPassword1">Nit</label>
-                  <input type="number" class="form-control" id="nit" placeholder="Nit Cliente" disabled>
+                     <input type="text" class="form-control" id="NIT" name="NIT" placeholder="NIT" disabled>
+ 
                 </div>
             </div>
           </div>
@@ -76,20 +72,21 @@
             <div class="col-md-6">
                 <div class="col-md-6">
                <div class="form-group">
-                <label>Producto</label>
-                <select class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Martillo</option>
-                  <option>Serrucho</option>
-                  <option>Lija 200</option>
-                  <option>Lija 300</option>
-                  <option>Silicon</option>
-                  <option>Tornillos 3/4</option>
-                  <option>Destornillador Philips</option>
-                </select>
+                <label>Producto</label>&nbsp;
+                   <asp:DropDownList  class="form-control select2" ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="id">
+                   </asp:DropDownList>
+                   <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:conn %>" SelectCommand="SELECT [nombre], [id], [precio], [cantidad], [descripcion] FROM [Producto]"></asp:SqlDataSource>
               </div>
               </div>                 
             </div>
-          
+            <div class="col-md-6">
+                <div class="col-md-6">
+                <div class="form-group">
+                  <label>Descripcion</label>
+                  <input type="text" class="form-control" id="descripcion" placeholder="Descripcion">
+                </div>
+                </div>                 
+            </div>
           </div>
           <!-- /.row -->
             <div class="box-footer">
@@ -103,3 +100,17 @@
  
 </asp:Content>
 
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentJS" Runat="Server">
+
+    <script type="text/javascript">
+
+        function cambioscliente()
+        {
+            var ddlReport = document.getElementById("<%=dropDownListCliente.ClientID%>");
+            var Value = ddlReport.options[ddlReport.selectedIndex].value;
+            document.getElementById("NIT").value = Value;
+      
+        }
+        </script>
+
+</asp:Content>

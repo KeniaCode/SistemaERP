@@ -561,8 +561,11 @@
             <div class="control-sidebar-bg"></div>
         </div>--%>
         <!-- ./wrapper -->
-
-        <!-- jQuery 2.2.3 -->
+            <section>
+                <asp:ContentPlaceHolder ID="ContentJS" runat="server"></asp:ContentPlaceHolder>
+        
+            </section>
+            <!-- jQuery 2.2.3 -->
         <script src="../App_Themes/Theme_AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
         <!-- Bootstrap 3.3.6 -->
         <script src="../App_Themes/Theme_AdminLTE/bootstrap/js/bootstrap.min.js"></script>
