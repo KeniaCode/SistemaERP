@@ -14,7 +14,32 @@ public partial class Views_insertarCliente : System.Web.UI.Page
 
     protected void btnAgregarCliente_Click(object sender, EventArgs e)
     {
-        Conexion.Crear("CLIENTE", "localdb","" );
+        String nombre = txtNombre.Text;
+        String apellido = txtApellido.Text;
+        String nit = txtNit.Text;
+        String dpi = txtDPI.Text;
+        String direccion = txtDireccion.Text;
+        String telefono = txtTelefono.Text;
+
+        Conexion Con = new Conexion();
+
+        bool respuesta = Con.Crear("CLIENTE", "nombre, apellido, nit, dpi, direccion,telefono", "'" + nombre + "', " + "'" + apellido + "', " + "'" + nit + "', " + "'" + dpi + "', " + "'" + direccion + "', " + "'" + telefono + "'");
+
+        txtNombre.Text = "";
+        txtApellido.Text = "";
+        txtNit.Text = "";
+        txtDPI.Text = "";
+        txtDireccion.Text = "";
+        txtTelefono.Text = "";
+
+        if (respuesta) {
+            this.Page.Response.Write("<script language='JavaScript'>window.alert('Cliente insertado con éxito');</script>");
+
+        }else
+        {
+            this.Page.Response.Write("<script language='JavaScript'>window.alert('Nit o DPi ya estan registrados');</script>");
+
+        }
 
 
     }
