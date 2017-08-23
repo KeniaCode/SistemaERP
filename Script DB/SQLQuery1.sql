@@ -6,6 +6,7 @@ Drop table Cliente;
 drop table Producto;
 Drop table Vendedor;
 Drop table Venta;
+Drop table Detalle;
 
 create table Cliente (
 dpi char(16),

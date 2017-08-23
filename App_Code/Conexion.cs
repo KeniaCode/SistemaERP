@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -86,6 +87,60 @@ public class Conexion
         return respuesta;
     }
 
+    public DataSet Consulta(string query)
+    {
+        DataSet respuesta = new DataSet();
+        try
+        {
+            //SELECT cod_depto, nombre_depto FROM DEPARTAMENTO;
+            SqlDataAdapter adaptador = new SqlDataAdapter(query, conexion);
+
+            if (ConectarServer())
+            {
+                adaptador.Fill(respuesta);
+            }
+        }
+        catch (Exception ex)
+        {
+            MostrarError = "Mensaje de la exepción: " + ex.Message.ToString();
+        }
+        finally
+        {
+            conexion.Close();
+        }
+
+        return respuesta;
     }
-   
+
+
+    public DataSet Buscar_Mostrar(string tabla, string condicion)
+    {
+        DataSet respuesta = new DataSet();
+        try
+        {
+            string instruccionSQL = "SELECT * FROM " + tabla + " WHERE " + condicion + ";";
+            SqlDataAdapter adaptador = new SqlDataAdapter(instruccionSQL, conexion);
+
+            if (ConectarServer())
+            {
+                adaptador.Fill(respuesta, condicion);
+            }
+        }
+        catch (Exception ex)
+        {
+            MostrarError = "Mensaje de la exepción: " + ex.Message.ToString();
+        }
+        finally
+        {
+            conexion.Close();
+        }
+
+        return respuesta;
+    }
+
+
+
+
+}
+
 
