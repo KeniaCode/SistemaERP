@@ -22,7 +22,7 @@ public partial class Views_Inventario : System.Web.UI.Page
         if (Convert.ToInt32(txt_cantidad.Text) > 0)
         {
             conexion = new SqlConnection();
-            conexion.ConnectionString = "Data Source=TOSH-PC;Initial Catalog=proyecto_ayd1;Integrated Security=True";
+            conexion.ConnectionString = "Data Source=DESKTOP-MT7QK0C;Initial Catalog=SistemaERP;Integrated Security=True";
             try
             {
                 conexion.Open();
@@ -37,7 +37,7 @@ public partial class Views_Inventario : System.Web.UI.Page
                 SqlCommand query = conexion.CreateCommand();
                 query.CommandType = CommandType.Text;
                 int total = Convert.ToInt32(val) + Convert.ToInt32(txt_cantidad.Text);
-                query.CommandText = "UPDATE PRODUCTO SET CANDTIDAD = " + total + " WHERE ID = " + codigoProducto;
+                query.CommandText = "UPDATE PRODUCTO SET CANTIDAD = " + total + " WHERE ID = " + codigoProducto;
 
                 int fil = query.ExecuteNonQuery();
 

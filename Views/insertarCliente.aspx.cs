@@ -18,18 +18,17 @@ public partial class Views_insertarCliente : System.Web.UI.Page
         String apellido = txtApellido.Text;
         String nit = txtNit.Text;
         String dpi = txtDPI.Text;
-        String direccion = txtDireccion.Text;
+       
         String telefono = txtTelefono.Text;
 
         Conexion Con = new Conexion();
 
-        bool respuesta = Con.Crear("CLIENTE", "nombre, apellido, nit, dpi, direccion,telefono", "'" + nombre + "', " + "'" + apellido + "', " + "'" + nit + "', " + "'" + dpi + "', " + "'" + direccion + "', " + "'" + telefono + "'");
+        bool respuesta = Con.Crear("CLIENTE", "nombre, apellidos, nit, dpi,telefono", "'" + nombre + "', " + "'" + apellido + "', " + "'" + nit + "', " + "'" + dpi + "', " + "'" + telefono + "'");
 
         txtNombre.Text = "";
         txtApellido.Text = "";
         txtNit.Text = "";
-        txtDPI.Text = "";
-        txtDireccion.Text = "";
+        txtDPI.Text = "";      
         txtTelefono.Text = "";
 
         if (respuesta) {

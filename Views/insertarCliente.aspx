@@ -21,8 +21,6 @@
                   <asp:TextBox ID="txtNit" runat="server" class="form-control" placeholder="Nit"></asp:TextBox>
                   <label>DPI: </label>
                   <asp:TextBox ID="txtDPI" runat="server" class="form-control" placeholder="DPI"></asp:TextBox>
-                  <label>Dirección: </label>
-                  <asp:TextBox ID="txtDireccion" runat="server" class="form-control" placeholder="Direccón"></asp:TextBox>
                   <label>Teléfono: </label>
                   <asp:TextBox ID="txtTelefono" runat="server" class="form-control" placeholder="Telefono"></asp:TextBox>
                 </div>

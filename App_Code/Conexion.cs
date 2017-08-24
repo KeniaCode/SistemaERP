@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Data;
-=======
->>>>>>> origin/Agregar_Clientes
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -14,17 +11,8 @@ using System.Web.Configuration;
 /// </summary>
 public class Conexion
 {
+
     private string mostrarError;
-<<<<<<< HEAD
- 
-    SqlConnection conexion = new SqlConnection();
-
-        
-
-
-
-        public string MostrarError
-=======
 
     SqlConnection conexion = new SqlConnection();
 
@@ -33,7 +21,7 @@ public class Conexion
 
 
     public string MostrarError
->>>>>>> origin/Agregar_Clientes
+
     {
         get { return mostrarError; }
         set { mostrarError = value; }
@@ -101,7 +89,6 @@ public class Conexion
         return respuesta;
     }
 
-<<<<<<< HEAD
     public DataSet Consulta(string query)
     {
         DataSet respuesta = new DataSet();
@@ -194,6 +181,5 @@ public class Conexion
 }
 
 
-=======
-}
->>>>>>> origin/Agregar_Clientes
+
+

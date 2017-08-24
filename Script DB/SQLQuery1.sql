@@ -88,3 +88,6 @@ select * from Vendedor
 
 INSERT INTO Venta(nitCliente, fechaVenta, Total, vendedordpi ) VALUES('585858-4    ', GETDATE(),875, '2618007790101');
 INSERT INTO Detalle(numeroVenta, idProducto, cantidad, subtotal) VALUES((select max(Venta) from venta),5,5 , 395);
+
+
+SELECT CANTIDAD FROM PRODUCTO WHERE ID = 1;

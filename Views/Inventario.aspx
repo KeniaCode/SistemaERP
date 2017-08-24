@@ -13,7 +13,7 @@
                 <td>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="nombre" DataValueField="id">
                     </asp:DropDownList>
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=TOSH-PC;Initial Catalog=proyecto_ayd1;Integrated Security=True" SelectCommand="SELECT [id], [nombre] FROM [producto]"></asp:SqlDataSource>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=DESKTOP-MT7QK0C;Initial Catalog=SistemaERP;Integrated Security=True" SelectCommand="SELECT [id], [nombre] FROM [producto]"></asp:SqlDataSource>
                 </td>
             </tr>
         </table>

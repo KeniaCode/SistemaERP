@@ -298,7 +298,7 @@ public partial class Views_insertarVenta : System.Web.UI.Page
 
                                                 "<td>" +
                                                     "   <ul class=\"table-controls\">" +
-                                              "          <li><a href=\"javascript:removecarrito('" + carrito[i].idventa + "')\"class=\"tip\" title=\"Remover\"><i class=\"fa fa-pencil margin-r-5\"></i></a> </li>" +
+                                              "          <li><a href=\"javascript:removecarrito('" + carrito[i].idventa + "')\"class=\"tip\" title=\"Remover\"><i class=\"glyphicon glyphicon-remove\"></i></a> </li>" +
                                              "       </ul>" +
                                             "    </td>" +
                                             " </tr>";

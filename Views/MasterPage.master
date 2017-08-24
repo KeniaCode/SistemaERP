@@ -241,7 +241,17 @@
                                 <li><a href="insertarCliente.aspx"><i class="fa fa-circle-o"></i>Nuevo Cliente</a></li>
                             </ul>
                         </li>
-
+                        <li class="auto-style1">
+                            <a href="#">
+                                <i class="fa fa-industry"></i><span>Inventario</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="Inventario.aspx"><i class="fa fa-circle-o"></i>Agregar</a></li>
+                            </ul>
+                        </li>
 
                         <li class="header">LABELS</li>
                         <li><a href="#"><i class="fa fa-circle-o text-red"></i><span>Important</span></a></li>
