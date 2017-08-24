@@ -79,7 +79,7 @@ public partial class Views_insertarVenta : System.Web.UI.Page
 
             conexion = new Conexion();
             DataSet Productos = conexion.Consulta("select * from Producto");
-            String html = "<select  runat=\"server\" class=\"form - control select2\" style=\"font-size: 15px;\" data-placeholder=\"Agregar producto\"   onChange=\"cambios()\"  id=\"cmbproductos\" >";
+            String html = "<select  runat=\"server\" class=\"form - control\" style=\"font-size: 15px;\" data-placeholder=\"Agregar producto\"   onChange=\"cambios()\"  id=\"cmbproductos\" >";
             html += "<option value=\"\"></option> ";
 
             foreach (DataRow item in Productos.Tables[0].Rows)
@@ -131,47 +131,43 @@ public partial class Views_insertarVenta : System.Web.UI.Page
             "<div class=\"modal-header\"> \n" +
             "<button type=\"button\" onclick=\"closeModalPago();\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button> \n" +
             "<div class=\"step-title\"> \n" +
-            "<i>C</i> \n" +
-            "<h5>Area Pago</h5> \n" +
-            "<span>realizar compra</span> \n" +
+            "<h3 class=\"box-title\">Area Pago</h3> \n" +
             "</div> \n" +
             "</div>\n"
-            ;
+
+             ;
         //content del modal
 
         innerhtml +=
-            "<form id=\"formulario_modal\" class=\"form-horizontal row-fluid well\"> \n" +
+            "<form id=\"formulario_modal\" class=\"sidebar - form\"> \n" +
             "<div class=\"modal-body\"> \n" +
             "<table border=\"0\" width=\"100%\" > \n" +
             "<div> \n" +
              //ID DEL CLIENTE
-             "<div class=\"control-group\"> \n" +
-            "<label class=\"control-label\" style=\"font-size: 15px;\" ><b>Codigo Cliente</b></label> \n" +
-            "<div class=\"controls\"><input  style=\"font-size: 15px disabled =\"disabled\" readonly=\"readonly\"  type=\"text\" value=\"" + cliente + "\" id=\"codclientepago\" runat=\"server\" class=\"span12\"/></div> \n" +
+            "<div class=\"col-md-12\"> \n" +
+            "<div class=\"form-group\">\n" + 
+            "<label class=\"control-label\" style=\"font-size: 15px;\" ><b>NIT Cliente</b></label> \n" +
+            "<div class=\"controls\"><input  style=\"font-size: 15px disabled =\"disabled\" readonly=\"readonly\"  type=\"text\" value=\"" + cliente + "\" id=\"codclientepago\" runat=\"server\" class=\"form - control\"/></div> \n" +
+            "</div> \n" +
             "</div> \n" +
 
 
-            "<div class=\"control-group\"> \n" +
+            "<div class=\"col-md-12\"> \n" +
+            "<div class=\"form-group\">\n" +
             "<label class=\"control-label\" style=\"font-size: 15px;\" ><b>Total:</b></label> \n" +
-            "<div class=\"controls\"><input placeholder=\"Total\" disabled =\"disabled\" readonly=\"readonly\" style=\"font-size: 15px;\" value=\"" + total + "\"type=\"text\" name=\"total\" id=\"totalpago\" runat=\"server\" class=\"span8\" /></div> \n" +
+            "<div class=\"controls\"><input placeholder=\"Total\" disabled =\"disabled\" readonly=\"readonly\" style=\"font-size: 15px;\" value=\"" + total + "\"type=\"text\" name=\"total\" id=\"totalpago\" runat=\"server\" class=\"form - control\" /></div> \n" +
+            "</div> \n" +
             "</div> \n" +
             //
 
-
-            "<div class=\"control-group\"> \n" +
+            "<div class=\"col-md-12\"> \n" +
+            "<div class=\"form-group\">\n" +
             "<label class=\"control-label\" style=\"font-size: 15px;\" ><b>Pago (Q.): </b></label> \n" +
-            "<div class=\"controls\"><input placeholder=\"Cantidad\" style=\"font-size: 15px;\" type=\"text\" name=\"total\" id=\"totalabonado\" runat=\"server\" class=\"span8\" /></div> \n" +
+            "<div class=\"controls\"><input placeholder=\"Cantidad\" style=\"font-size: 15px;\" type=\"text\" name=\"total\" id=\"totalabonado\" runat=\"server\" class=\"form - control\" /></div> \n" +
             "</div> \n" +
+            "</div> \n"+
 
-            "<div class=\"control-group\"> \n" +
-            "<label class=\"control-label\" style=\"font-size: 15px;\" ><b>Tipo Pago</b></label> \n" +
-            "<div class=\"controls\"><select style=\"font-size: 15px;\" data-placeholder=\"Agregar producto\" class=\"select\"  onChange=\"cambio()\"  id=\"cmbpago\" tabindex=\"2\"><option value=\"1\">Efectivo</option><option value=\"2\">Credito</option> <option value=\"3\">Deposito</option> </select></div> \n" +
-
-            "</div> \n" +
-            "<div class=\"control-group\"> \n" +
-            "<div style=\"font-size: 20px;\" ><input type=\"checkbox\" onClick=\"Verificar();\" id=\"tipoventa\" name=\"tipoventa\" /> Vale </div>" +
-            "</div> \n" +
-
+            
             "<tr> \n" +
             "<td colspan=\"2\"> \n" +
             "<div style=\"font-size: 15px;\" id=\"mensaje\"></div> \n" +
@@ -255,11 +251,15 @@ public partial class Views_insertarVenta : System.Web.UI.Page
     {
 
         string str = "<div class=\"widget\">" +
-                "<div class=\"navbar\">" +
-                "    <div class=\"navbar-inner\">" +
-                "       <h6>Detalle</h6>" +
+                "<div class=\"box box-default\">" +
+                "    <div class=\"box-header with-border\">" +
+                "       <h6 class=\" box-title\">Detalle</h6>" +
                 "        <div class=\"nav pull-right\">" +
                 "        </div>" +
+                "           <div class=\"box-tools pull-right\">"+
+                "               <button type = \"button\" class=\"btn btn-box-tool\" data-widget=\"collapse\"><i class=\"fa fa-minus\"></i></button>"+
+                "               <button type = \"button\" class=\"btn btn-box-tool\" data-widget=\"remove\"><i class=\"fa fa-remove\"></i></button>"+
+                 "          </div>"+
                 "    </div>" +
                 "</div>" +
                 "<div class=\"table-overflow\">" +
@@ -275,7 +275,8 @@ public partial class Views_insertarVenta : System.Web.UI.Page
                 "            </tr>" +
                 "        </thead>" +
                 "        <tbody>";
-        
+
+
 
         List<Product> carrito = (HttpContext.Current.Session["Carrito"] != null) ? (List<Product>)HttpContext.Current.Session["Carrito"] : null;
 
@@ -297,8 +298,7 @@ public partial class Views_insertarVenta : System.Web.UI.Page
 
                                                 "<td>" +
                                                     "   <ul class=\"table-controls\">" +
-                                              "          <li><a href=\"javascript:removecarrito('" + carrito[i].idventa + "')\"class=\"tip\" title=\"Remover\"><i class=\"fam-cross\"></i></a> </li>" +
-                                              "          <li><a href=\"javascript:modaldescuento('" + carrito[i].idventa + "')\"class=\"tip\" title=\"Descuento\"><i class=\"fam-coins-delete\"></i></a> </li>" +
+                                              "          <li><a href=\"javascript:removecarrito('" + carrito[i].idventa + "')\"class=\"tip\" title=\"Remover\"><i class=\"fa fa-pencil margin-r-5\"></i></a> </li>" +
                                              "       </ul>" +
                                             "    </td>" +
                                             " </tr>";
@@ -383,6 +383,164 @@ public partial class Views_insertarVenta : System.Web.UI.Page
 
 
     }
+    //VENTAS
+    [WebMethod]
+    public static string GetVenta()
+    {
+
+        string venta;
+        Conexion nueva = new Conexion();
+        DataSet ConVenta = nueva.Consulta("(select max(Venta) from venta)");
+        venta = Convert.ToString(ConVenta.Tables[0].Rows[0][0]);
+
+        return venta;
+
+    }
+
+
+
+
+
+    //AGREGAR pago
+
+
+
+
+    [WebMethod]
+    public static bool AddPago(string total, string cliente)
+    {
+        Conexion nueva = new Conexion();
+        bool respuesta;
+        
+        Double totalventa = 0;
+
+        List<Product> carrito = (HttpContext.Current.Session["Carrito"] != null) ? (List<Product>)HttpContext.Current.Session["Carrito"] : null;
+
+
+        foreach (var item in carrito)
+        {
+            totalventa += item.subTotal;
+           
+        }
+
+        if (totalventa == 0) { return false; }
+
+        respuesta = nueva.Crear("Venta", "nitCliente, fechaVenta, Total, vendedordpi ", "'"+ cliente + "', GETDATE()," + Convert.ToString(total).Replace(",", ".") +", " + "'2618007790101'");
+        if (respuesta == true)
+        {
+            foreach (var item in carrito)
+            {
+               
+                    respuesta = nueva.Crear("Detalle", "numeroVenta, idProducto, cantidad, subtotal", "(select max(Venta) from venta)," + item.codigo + "," + item.cantidad + " , " + Convert.ToString(item.subTotal).Replace(",", ".") );
+
+                 
+                    respuesta = nueva.Modificar("Producto", " Cantidad = Cantidad - " + item.cantidad + " ", " id = " + item.codigo + " ");
+  
+
+             }
+               
+
+            }
+        
+        carrito.Clear();
+
+        HttpContext.Current.Session["Carrito"] = carrito;
+
+        return respuesta;
+        }
+
+
+
+    [WebMethod]
+    public static string CleanCarrito()
+    {
+        List<Product> carrito = (HttpContext.Current.Session["Carrito"] != null) ? (List<Product>)HttpContext.Current.Session["Carrito"] : null;
+        /*
+        string user = HttpContext.Current.Session["IdUser"].ToString();
+        for (int i = 0; i < carrito.Count; i++)
+        {
+            if (carrito[i].usuario.Equals(user))
+            {
+                carrito.RemoveAt(i);
+            }
+
+        }
+         * */
+        carrito.Clear();
+        HttpContext.Current.Session["Carrito"] = carrito;
+        return Graficar();
+
+    }
+
+
+    [WebMethod]
+    public static string removecarrito(String codigo)
+    {
+        List<Product> carrito = (HttpContext.Current.Session["Carrito"] != null) ? (List<Product>)HttpContext.Current.Session["Carrito"] : null;
+
+
+        for (int i = 0; i < carrito.Count; i++)
+        {
+
+            if (carrito[i].idventa.Equals(codigo))
+            {
+                carrito.RemoveAt(i);
+            }
+            /*
+            if (carrito[i].usuario.Equals(user)) {
+                if (carrito[i].idventa.Equals(codigo))
+                {
+                    carrito.RemoveAt(i);
+                }
+            }*/
+
+
+        }
+
+        HttpContext.Current.Session["Carrito"] = carrito;
+        return Graficar();
+    }
+
+    [WebMethod]
+    public static Double quitarcantidad(String codigo)
+    {
+        string cantidad;
+       
+        Double total = 0;
+
+        List<Product> carrito = (HttpContext.Current.Session["Carrito"] != null) ? (List<Product>)HttpContext.Current.Session["Carrito"] : null;
+
+         for (int i = 0; i < carrito.Count; i++)
+        {
+            if (carrito[i].idventa.Equals(codigo))
+            {
+
+                cantidad = carrito[i].cantidad;
+                total = Convert.ToDouble(cantidad, CultureInfo.InvariantCulture);
+                break;
+            }
+            /*
+            if (carrito[i].usuario.Equals(user)) {
+                if (carrito[i].idventa.Equals(codigo))
+                {
+
+                    cantidad = carrito[i].cantidad;
+                    largo = carrito[i].largo;
+                    total = Convert.ToDouble(largo, CultureInfo.InvariantCulture) * Convert.ToDouble(cantidad, CultureInfo.InvariantCulture);
+                    break;
+                }
+
+            }
+            */
+
+        }
+
+
+        HttpContext.Current.Session["Carrito"] = carrito;
+
+        return total;
+    }
+
 
 
 }

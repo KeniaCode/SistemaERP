@@ -1,12 +1,17 @@
 ﻿CREATE DATABASE SistemaERP;
 
 USE SistemaERP;
+
+
+
+Drop table Detalle;
+Drop table Venta;
 Drop table Categoria;
 Drop table Cliente;
 drop table Producto;
 Drop table Vendedor;
-Drop table Venta;
-Drop table Detalle;
+
+
 
 create table Cliente (
 dpi char(16),
@@ -14,7 +19,7 @@ nombre char(40) not null,
 apellidos char(40) not null,
 nit char(12) not null,
 telefono numeric(8) not null,
-primary key (dpi)
+primary key (nit)
 );
 
 create table Categoria(
@@ -51,14 +56,14 @@ primary key (dpi)
 
 create table Venta 
 ( 
-numeroVenta int identity(1,1),
+Venta int identity(1,1),
 fechaVenta date not null,
-clientedpi char(16) not null,
+nitCliente char(12) not null,
 vendedordpi char(16) not null,
-primary key(numeroVenta),
-foreign key(clientedpi) references Cliente(dpi) ON DELETE CASCADE, 
+total real, 
+primary key(Venta),
+foreign key(nitCliente) references Cliente(nit) ON DELETE CASCADE, 
 foreign key(vendedordpi) references Vendedor(dpi) ON DELETE CASCADE
-
 );
 
 
@@ -67,7 +72,8 @@ create table Detalle
 numeroVenta int not null,
 idProducto int not null,
 cantidad int not null,
-foreign key(numeroVenta) references Venta(numeroVenta) on delete cascade,
+subtotal real
+foreign key(numeroVenta) references Venta(Venta) on delete cascade,
 foreign key(idProducto) references Producto(id) on delete cascade,
 primary key(numeroVenta, idProducto)
 );
@@ -76,3 +82,9 @@ insert into Cliente values('2616501300304','Erick Roberto', 'Tejaxun Xicon', '12
 insert into Cliente values('2618221542156','Wilder Emmanuel', 'Siguantay Gonzalez', '585858-4',4546542);
 
 insert into Producto values('Griferia 1/2 Plg', 1 , 39.99,100,'Griferia marca Helbert 1/2 pulgada economico');
+select max(Venta) from venta
+
+select * from Vendedor
+
+INSERT INTO Venta(nitCliente, fechaVenta, Total, vendedordpi ) VALUES('585858-4    ', GETDATE(),875, '2618007790101');
+INSERT INTO Detalle(numeroVenta, idProducto, cantidad, subtotal) VALUES((select max(Venta) from venta),5,5 , 395);

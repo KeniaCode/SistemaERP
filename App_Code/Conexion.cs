@@ -139,6 +139,41 @@ public class Conexion
     }
 
 
+    public bool Modificar(string tabla, string campos, string condicion)
+    {
+        bool respuesta = false;
+
+        try
+        {
+            SqlCommand comando = new SqlCommand();
+            comando.Connection = conexion;
+            //UPDATE DEPARTAMENTO SET nombre_depto = 'San Marcos' WHERE cod_depto = 2;
+            comando.CommandText = "UPDATE " + tabla + " SET " + campos + " WHERE " + condicion + ";";
+            if (ConectarServer())
+            {
+                if (comando.ExecuteNonQuery() == 1)
+                    respuesta = true;
+                else
+                    respuesta = false;
+            }
+            else
+            {
+                respuesta = false;
+            }
+        }
+        catch (Exception ex)
+        {
+            respuesta = false;
+            MostrarError = "Mensaje de la excepcion: " + ex.Message.ToString();
+        }
+        finally
+        {
+            conexion.Close();
+        }
+        return respuesta;
+    }
+
+
 
 
 }
