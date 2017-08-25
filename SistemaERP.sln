@@ -21,15 +21,25 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SistemaERP", ".", "{A7A554E
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "3135"
+		SlnRelativePath = "..\SistemaERP\"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaERP.Tests", "SistemaERP.Tests\SistemaERP.Tests.csproj", "{667138B4-252E-47AF-AFB2-C9808D9BB2F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A7A554E8-7C8C-4797-B905-E14F557A1EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A7A554E8-7C8C-4797-B905-E14F557A1EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A554E8-7C8C-4797-B905-E14F557A1EB6}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A554E8-7C8C-4797-B905-E14F557A1EB6}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{667138B4-252E-47AF-AFB2-C9808D9BB2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667138B4-252E-47AF-AFB2-C9808D9BB2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667138B4-252E-47AF-AFB2-C9808D9BB2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667138B4-252E-47AF-AFB2-C9808D9BB2F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

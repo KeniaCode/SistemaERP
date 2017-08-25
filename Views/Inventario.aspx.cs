@@ -19,10 +19,14 @@ public partial class Views_Inventario : System.Web.UI.Page
     {
         int codigoProducto = Convert.ToInt32(DropDownList1.SelectedItem.Value);
 
-        if (Convert.ToInt32(txt_cantidad.Text) > 0)
-        {
+        Console.WriteLine(codigoProducto);
+        int cantidad = Convert.ToInt32(txt_cantidad.Text);
+
+        if ( cantidad> 0) {
+
             conexion = new SqlConnection();
             conexion.ConnectionString = "Data Source=TOSH-PC;Initial Catalog=proyecto_ayd1;Integrated Security=True";
+
             try
             {
                 conexion.Open();
@@ -37,11 +41,11 @@ public partial class Views_Inventario : System.Web.UI.Page
                 SqlCommand query = conexion.CreateCommand();
                 query.CommandType = CommandType.Text;
                 int total = Convert.ToInt32(val) + Convert.ToInt32(txt_cantidad.Text);
-                query.CommandText = "UPDATE PRODUCTO SET CANDTIDAD = " + total + " WHERE ID = " + codigoProducto;
+                query.CommandText = "UPDATE PRODUCTO SET CANTIDAD = " + total + " WHERE ID = " + codigoProducto;
 
                 int fil = query.ExecuteNonQuery();
 
-                if (fil > 0){}
+                if (fil > 0) { Console.WriteLine("error"); }
 
                 ScriptManager.RegisterClientScriptBlock(this,
                                                         typeof(Page),
@@ -52,7 +56,7 @@ public partial class Views_Inventario : System.Web.UI.Page
             }
             catch (Exception se)
             {
-
+                Console.WriteLine(se);
             }
             finally
             {
@@ -63,6 +67,18 @@ public partial class Views_Inventario : System.Web.UI.Page
             }
 
         }
+        else
+        {
+
+            Console.WriteLine("eror");
+        }
         txt_cantidad.Text = "";
     }
+
+    public Boolean cantidadAprobada(int n)
+    {
+        return n > 0;
+    }
+
+
 }
